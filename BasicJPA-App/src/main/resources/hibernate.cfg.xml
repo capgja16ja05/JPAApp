@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+                                        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+ 
+  <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+  <property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property>
+  <property name="hibernate.connection.username">user1</property>
+  <property name="hibernate.connection.password">user1</property>
+  <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+   
+   
+  <property name="show_sql">true</property>
+  <property name="hibernate.hbm2ddl.auto">create</property>
+  <mapping class="com.capg.jpa.p1.Account"/>
+  <mapping class="com.capg.jpa.p1.TaxationFile"/>
+  <mapping class="com.capg.jpa.p1.Transaction"/>
+  
+  <mapping class="com.capg.jpa.p2.Hotels"/>
+  <mapping class="com.capg.jpa.p2.TouristApp"/>
+  
+  <mapping class="com.capg.jpa.p3.Insurance"/>
+  <mapping class="com.capg.jpa.p3.MedicalInsurance"/>
+  <mapping class="com.capg.jpa.p3.LifeInsurance"/>
+  
+  
+  
+ 
+ </session-factory>
+</hibernate-configuration>
