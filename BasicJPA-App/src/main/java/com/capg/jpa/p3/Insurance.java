@@ -12,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.capg.jpa.p1.Account;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,10 +33,28 @@ public class Insurance implements Comparable<Insurance>,Serializable
 	private String policyHolderName;
 	private LocalDate policyDate;
 	
+	
+
+	@ManyToOne
+	@JoinColumn(name="Account_Number")
+	private Account account;
+	
 	public Insurance() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Account getAccount() {
+		return account;
+	}
+
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
 	public Insurance(int premiumAmount, String policyHolderName, LocalDate policyDate) {
 		super();
 		this.premiumAmount = premiumAmount;

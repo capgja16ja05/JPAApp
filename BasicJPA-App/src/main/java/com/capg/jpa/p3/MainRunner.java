@@ -28,7 +28,7 @@ public class MainRunner {
 
 		Transaction t = session.beginTransaction();
 		
-		// EntityManager em;
+		// EntityManager em; 
 		session.save(insurance);
 		session.save(li1);
 		session.save(mi);

@@ -10,6 +10,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.capg.jpa.p3.Insurance;
+import com.capg.jpa.p3.LifeInsurance;
+import com.capg.jpa.p3.MedicalInsurance;
+
 
 public class MainClass {
 
@@ -27,22 +31,22 @@ public class MainClass {
 
 		Account a = new Account();
 
-		a.setAccId(107);
-		a.setAccountHolderName("Ramesh");
+	
+		a.setAccountHolderName("Mike");
 		a.setBalance(2000);
 		a.setOpenningDate(LocalDate.now());
 
-		Address address = new Address(123, "New Delhi", "Delhi");
+		Address address = new Address(123, "Banglore", "Banglore");
 		a.setAddress(address);
 
-		Address officeaddress = new Address(4848, "New Delhi", "Delhi");
+		Address officeaddress = new Address(5848, "New Delhi", "Delhi");
 		a.setOffice_address(officeaddress);
 
 		// ---------- Embedded Collection Insertion
 
-		Policy p1 = new Policy("Policy-A", 100, 2000);
-		Policy p2 = new Policy("Policy-B", 200, 3000);
-		Policy p3 = new Policy("Policy-C", 300, 4000);
+		Policy p1 = new Policy("Policy-X", 1000, 2000);
+		Policy p2 = new Policy("Policy-Y", 2000, 3000);
+		Policy p3 = new Policy("Policy-Z", 3000, 14000);
 
 		List<Policy> policyList = Arrays.asList(p1, p2, p3);
 		a.setPolicies(policyList);
@@ -63,8 +67,14 @@ public class MainClass {
 		
 		a.setTransactions(transactionList);
 		
+		 // ---------- Adding Insurance Inheritance Mapping ----------
+		
+		Insurance i1 = new LifeInsurance(16000, a.getAccountHolderName(), LocalDate.now(), 7400000, 35);
+		Insurance i2 = new MedicalInsurance(7800, a.getAccountHolderName(), LocalDate.now(), 600000, 180000);
 		
 		
+		List<Insurance> insuranceList = Arrays.asList(i1,i2);
+		a.setInsuranceList(insuranceList);
 
 		////////////////////////////////////////////////////////////////////////
 		// Insertion

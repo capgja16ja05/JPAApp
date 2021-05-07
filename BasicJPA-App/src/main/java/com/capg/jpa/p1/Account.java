@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.capg.jpa.p3.Insurance;
+
 @Entity   
 @Table(name = "MyAccounts")
 public class Account {
@@ -70,6 +72,13 @@ public class Account {
 	
 	
 	
+	// ------------- Adding Insurance Class with Accounts -----
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="Account_Number")
+	private List<Insurance> insuranceList;
+	
+	
 	
 	
 	
@@ -80,6 +89,18 @@ public class Account {
 
 	
 	
+	public List<Insurance> getInsuranceList() {
+		return insuranceList;
+	}
+
+
+
+	public void setInsuranceList(List<Insurance> insuranceList) {
+		this.insuranceList = insuranceList;
+	}
+
+
+
 	public List<Transaction> getTransactions() {
 		return transactions;
 	}
